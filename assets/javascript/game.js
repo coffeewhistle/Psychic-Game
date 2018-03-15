@@ -2,14 +2,14 @@ window.onload = function() {
 
 var wins = 0;
 var losses = 0;
-var guessesLeft = 20;
+var guessesLeft = 10;
 var guesses = [];
 var letters = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
 
 function game() {
     letterToGuess = letters[Math.floor(Math.random()*letters.length)];
     
-    document.getElementById("guessesLeft").innerHTML = 20;
+    document.getElementById("guessesLeft").innerHTML = 10;
     document.getElementById("guesses").innerHTML = "";
 
     console.log(letterToGuess);
@@ -33,7 +33,8 @@ function game() {
         };
         if (guessesLeft < 1) {
             alert("YOU LOSE!");
-            ++losses;
+            losses++;
+            document.getElementById("losses").innerHTML = losses;
             reset();
             game();
         };
@@ -42,8 +43,8 @@ function game() {
 game();
 
 function reset() {
+    guessesLeft = 10;
     guesses = [];
-    guessesLeft = 20;
 }
 
 };
